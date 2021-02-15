@@ -1,0 +1,18 @@
+#Api connect
+flask
+flask-socketio
+flask_cors
+
+#Database and migration
+psycopg2-binary
+Flask-SQLAlchemy
+alembic
+
+#Environment
+python-dotenv
+
+#Access externals apis
+requests
+
+#message broker
+pika
