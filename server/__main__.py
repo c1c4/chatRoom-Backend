@@ -2,12 +2,14 @@ from flask_socketio import SocketIO
 
 from server import init_api
 from server.controllers.login_controller import login_blueprint
+from server.controllers.message_controller import messages_blueprint
 from server.controllers.user_controller import user_blueprint
 from server.service.message_service import save_message
 
 app = init_api()
 app.register_blueprint(login_blueprint)
 app.register_blueprint(user_blueprint)
+app.register_blueprint(messages_blueprint)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 

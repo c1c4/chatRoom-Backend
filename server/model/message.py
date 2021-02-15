@@ -28,7 +28,7 @@ class Message(db.Model):
     def convert_model_to_dto(message_model):
         user_json = {
             'id': message_model.id,
-            'dateTime': message_model.date_time,
+            'dateTime': message_model.date_time.strftime('%d/%m/%Y %H:%M:%S'),
             'message': message_model.message,
             'user': User.convert_model_to_dto(message_model.user)
         }

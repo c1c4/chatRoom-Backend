@@ -12,3 +12,6 @@ You can use: **alembic revision --autogenerate -m "v0"** to generate your migrat
 or just **alembic revision -m "v0"** to create a empty migration file.
 With the migrations created you can use the **alembic upgrade head**.
 When you finish don't forget to undo the changes on alembic.ini.
+
+For use the message broker are on the requirements.txt
+You'll need go to you terminal again and create a docker **docker run --rm -p 5672:5672 -p 8081:15672 rabbitmq:3-management**
