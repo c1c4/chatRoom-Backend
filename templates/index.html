@@ -15,7 +15,10 @@
       const socket = io("http://localhost:8080");
 
       function sendMsg() {
-          socket.emit("message", "HELLO WORLD");
+          socket.emit("message", {
+            message: '/stock=aapl.us',
+            userId: 1
+          });
       }
 
       socket.on("message", function(data) {

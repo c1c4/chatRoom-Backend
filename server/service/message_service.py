@@ -1,22 +1,23 @@
 from flask import jsonify
 
-from server.message_broker.send import send_stock_message
 from server.model.message import Message
 from server.repository.default_repository import save
 from server.repository.message_repository import get_last_fifty_messages
+from server.request.chatBot_requests import send_to_chatbot
 
 
 def save_message(json_message):
     message = Message.convert_dto_to_model(json_message)
     save(message, is_insert=True)
 
-    if not is_command_message(message):
-        message_dto = Message.convert_model_to_dto(message)
-        response = jsonify(message_dto)
-        return response.json, False
-    else:
-        send_stock_message(message.message)
-        return None, True
+    message_dto = Message.convert_model_to_dto(message)
+    response = jsonify(message_dto)
+
+    if is_command_message(message):
+        stock_code = message.message.split('=')
+        send_to_chatbot(stock_code[1])
+
+    return response.json
 
 
 def retrieve_last_fifty():

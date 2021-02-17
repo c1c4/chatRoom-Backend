@@ -13,6 +13,3 @@ python-dotenv
 
 #Access externals apis
 requests
-
-#message broker
-kombu

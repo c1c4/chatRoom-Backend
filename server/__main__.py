@@ -20,10 +20,8 @@ def messageReceived(methods=['GET', 'POST']):
 
 @socketio.on('message')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
-    message_saved, is_command = save_message(json)
-
-    if not is_command:
-        socketio.emit('my response', message_saved, callback=messageReceived)
+    message_saved = save_message(json)
+    socketio.emit('my response', message_saved, callback=messageReceived)
 
 
 def main():
